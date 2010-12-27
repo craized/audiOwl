@@ -8,7 +8,8 @@
  */
 
 /* Include Libraries */
-var db = require('./lib/db.js'),
+var sys = require('sys'),
+    db = require('./lib/db.js'),
     http = require('http');
 
 /* Load Config Data */
@@ -18,6 +19,6 @@ var cfg = db.read('config');
 http.createServer(function(req, res) {
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end('Welcome to audiOwl\n');
-}).listen(cfg.port, cfg.ip);
+}).listen(9100, 'localhost');
 
-console.log('Server running at '+cfg.ip+':'+cfg.port);
+sys.log('Server running at '+cfg.ip+':'+cfg.port);
