@@ -12,8 +12,8 @@ GLOBAL.basedir = __dirname;
 /* Include Libraries */
 var sys = require('sys'),
 	fs = require('fs'),
-    db = require('./lib/db.js'),
-    http = require('http'),
+	db = require('./lib/db.js'),
+	http = require('http'),
 	url = require('url');
 
 /* Load Config Data */
