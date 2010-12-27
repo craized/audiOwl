@@ -8,6 +8,7 @@
  */
 
 /* Include Libraries */
+GLOBAL.basedir = __dirname;
 var sys = require('sys'),
     db = require('./lib/db.js'),
     http = require('http');
