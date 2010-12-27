@@ -23,9 +23,10 @@ var cfg = db.read('config');
 http.createServer(function(req, res) {
 	var page = url.parse(req.url, true);
 	var file = page.pathname == '/' ? 'index.html' : page.pathname;
-	
+	var fpath = basedir+'/htdocs/'+file;
+
 	// Attempt to load requested file
-	fs.readFile(basedir+'/htdocs/'+file, function(err, data) {
+	fs.readFile(fpath, function(err, data) {
 		// Throw 404 on error
 		if (err) {
 			res.writeHead(404, {'Content-Type': 'text/plain'});
@@ -44,7 +45,7 @@ http.createServer(function(req, res) {
 
 		// Send data to browser
 		res.writeHead(200, {'Content-Type': type });
-		res.end(fs.readFileSync(basedir+'/htdocs/'+file));
+		res.end(fs.readFileSync(fpath));
 
 		sys.log('[GET] Sent file requested ('+file+'; '+type+')');
 	});
