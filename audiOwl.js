@@ -8,6 +8,25 @@
  */
 
 GLOBAL.basedir = __dirname;
+GLOBAL.in_array = function (needle, haystack, argScript) {
+    var key = '', strict = !!argStrict;
+ 
+    if (strict) {
+        for (key in haystack) {
+            if (haystack[key] === needle) {
+                return true;
+            }
+        }
+    } else {
+        for (key in haystack) {
+            if (haystack[key] == needle) {
+                return true;
+            }
+        }
+    }
+ 
+    return false;
+};
 
 /* Include Libraries */
 var sys = require('sys'),
