@@ -7,8 +7,9 @@
  *
  */
 
-/* Include Libraries */
 GLOBAL.basedir = __dirname;
+
+/* Include Libraries */
 var sys = require('sys'),
     db = require('./lib/db.js'),
     http = require('http');
@@ -20,6 +21,6 @@ var cfg = db.read('config');
 http.createServer(function(req, res) {
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end('Welcome to audiOwl\n');
-}).listen(9100, 'localhost');
+}).listen(cfg.port, cfg.ip);
 
 sys.log('Server running at '+cfg.ip+':'+cfg.port);
