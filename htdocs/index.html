@@ -12,18 +12,30 @@
 		<h1>audiOwl</h1>	
 	</header>
 	<nav>
-	<ul>
-		<li><a href="#library">Library</a></li>
-		<li><a href="#settings">Settings</a></li>
-		<li><a href="#queue">Queue</a></li>
-		<li><a href="#status">Status</a></li>
-	</ul>
+		<ul>
+			<li><a href="#library">Library</a></li>
+			<li><a href="#settings">Settings</a></li>
+			<li><a href="#queue">Queue</a></li>
+			<li><a href="#status">Status</a></li>
+		</ul>
 	</nav>
 
-	<section>
-		<p>
-			Under Construction!
-		</p>
+	<section id="p_settings">
+		<form method="post" action="#settings">
+		<fieldset>
+			<legend>Server Configuration</legend>
+			<table cellspacing="0">
+				<tr>
+					<td><label for="s_host">Listen on Host/IP</label></td>
+					<td><input type="text" name="host" id="s_host" /></td>
+				</tr>
+				<tr>
+					<td><label for="s_port">Listen on Port</label></td>
+					<td><input type="text" name="port" id="s_port" /></td>
+				</tr>
+			</table>
+		</fieldset>
+		</form>
 	</section>
 </body>
 </html>
