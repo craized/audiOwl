@@ -5,37 +5,45 @@
 	<title>audiOwl :: Home</title>
 	<style>@import "/css/global.css";</style>
 	<script src="/js/jquery.min.js"></script>
+	<script src="/js/jquery.reject.min.js"></script>
 	<script src="/js/global.js"></script>
 </head>
 <body>
 	<header>
-		<h1>audiOwl</h1>	
+		<h1>audiOwl ${test}</h1>
+		<nav>
+			<ul>
+				<li><a href="#library">Library</a></li>
+				<li><a href="#settings">Settings</a></li>
+				<li><a href="#queue">Queue</a></li>
+				<li><a href="#status">Status</a></li>
+			</ul>
+		</nav>
 	</header>
-	<nav>
-		<ul>
-			<li><a href="#library">Library</a></li>
-			<li><a href="#settings">Settings</a></li>
-			<li><a href="#queue">Queue</a></li>
-			<li><a href="#status">Status</a></li>
-		</ul>
-	</nav>
-
+	<div id="wrapper">
 	<section id="p_settings">
-		<form method="post" action="#settings">
+		<form method="get">
+		<input type="hidden" name="action" value="cfg.save" />
 		<fieldset>
 			<legend>Server Configuration</legend>
 			<table cellspacing="0">
 				<tr>
-					<td><label for="s_host">Listen on Host/IP</label></td>
-					<td><input type="text" name="host" id="s_host" /></td>
+					<td><label for="s_ip">Listen on Host/IP</label></td>
+					<td><input type="text" name="ip" id="s_ip" value="${cfg.ip}" /></td>
 				</tr>
 				<tr>
 					<td><label for="s_port">Listen on Port</label></td>
-					<td><input type="text" name="port" id="s_port" /></td>
+					<td><input type="text" name="port" id="s_port" value="${cfg.port}" /></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<button id="s_save">Save Config</button>
+					</td>
 				</tr>
 			</table>
 		</fieldset>
 		</form>
 	</section>
+	</div>
 </body>
 </html>

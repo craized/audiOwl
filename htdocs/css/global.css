@@ -3,12 +3,50 @@
  * Global CSS
  */
 
+/* Global Definitions */
 * {
 	margin: 0;
 	padding: 0;
 }
 body {
-	
+	font: small "Trebuchet MS", Tahoma, Verdana, Arial;
+	color: #FFF;
+	background: #CCC;
+}
+a {
+	color: #F4F4F4;
+	text-decoration: none;
+	font-weight: bold;
+}
+fieldset {
+	border: 1px solid #000;
+	width: auto;
+}
+legend {
+	background: #333;
+	color: #FFF;
+}
+header {
+	/*position: fixed;*/
+	height: 50px;
+	width: 100%;
+}
+h1 {
+	font-size: 2em;
+	color: #FFF;
 }
 
 
+/* Template Defintions */
+#wrapper {
+	margin-top: 50px;
+	width: 100%;
+}
+
+/* Misc. Classes */
+.hidden {
+	display: none;
+}
+.center {
+	text-align: center
+}

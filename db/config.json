@@ -1,4 +1,1 @@
-{ 
-    ip : 'localhost', 
-    port: 9100 
-}
+{"ip":"localhost","port":"9100"}
