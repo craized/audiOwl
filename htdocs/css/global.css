@@ -18,29 +18,93 @@ a {
 	text-decoration: none;
 	font-weight: bold;
 }
+a:focus {
+	border: 0;
+	outline: 0;
+}
 fieldset {
 	border: 1px solid #000;
-	width: auto;
+	width: 75%;
+	padding: 10px;
 }
 legend {
 	background: #333;
 	color: #FFF;
 }
+label {
+	font-weight: bold;
+	cursor: pointer;
+	padding: 5px;
+}
+label:focus, label:hover {
+	background: #CCC;
+	color: #000;
+}
+input {
+	outline: 0;
+	border: 1px solid #333;
+}
+input:focus {
+	outline: 0;
+	border: 1px solid #FF0000;
+}
+button {
+	border: 1px solid #000;
+	padding: 3px;
+	color: #000;
+	background: #FFF;
+}
+table {
+	padding: 0;
+	margin: 5px;
+}
+tr {
+	vertical-align: top;
+}
+td {
+	border-bottom: 1px solid #DDD;
+	padding: 5px 12px;
+}
 header {
-	/*position: fixed;*/
+	float: left;
 	height: 50px;
-	width: 100%;
+	width: 20%;
 }
 h1 {
 	font-size: 2em;
 	color: #FFF;
 }
-
+nav ul {
+	list-style: none;
+	width: 180px;
+}
+nav ul li {
+	width: 180px;
+	height: 25px;
+	background: #FFF;
+	color: #000;
+	border: 1px solid #000;
+	text-transform: uppercase;
+}
+nav a {
+	display: block;
+	width: 170px;
+	height: 20px;
+	padding: 5px 0 0 10px;
+	color: inherit;
+	border: 0;
+}
+nav a:focus, nav a:hover {
+	background: #CCC;
+	color: #FFF;
+	border: 0;
+}
 
 /* Template Defintions */
 #wrapper {
-	margin-top: 50px;
-	width: 100%;
+	float: left;
+	width: 80%;
+	margin-top: 20px;
 }
 
 /* Misc. Classes */

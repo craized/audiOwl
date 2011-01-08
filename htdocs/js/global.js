@@ -23,5 +23,15 @@ $(function() {
 		}, 'json');
 
 		return false;
+	})
+	
+	// Start keynav plugin
+	$('.key').keynav('key_focus','key');
+
+	// Handle keycodes
+	// TAB : 9
+	// Arrows: left: 37, up: 38
+	// right: 39, down: 40
+	$('body').keydown(function(e) {
 	});
 });

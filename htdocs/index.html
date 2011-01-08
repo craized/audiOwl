@@ -5,6 +5,7 @@
 	<title>audiOwl :: Home</title>
 	<style>@import "/css/global.css";</style>
 	<script src="/js/jquery.min.js"></script>
+	<script src="/js/jquery.keynav.js"></script>
 	<script src="/js/jquery.reject.min.js"></script>
 	<script src="/js/global.js"></script>
 </head>
@@ -13,10 +14,10 @@
 		<h1>audiOwl ${test}</h1>
 		<nav>
 			<ul>
-				<li><a href="#library">Library</a></li>
-				<li><a href="#settings">Settings</a></li>
-				<li><a href="#queue">Queue</a></li>
-				<li><a href="#status">Status</a></li>
+				<li><a href="#library" class="key">Library</a></li>
+				<li><a href="#settings" class="key">Settings</a></li>
+				<li><a href="#queue" class="key">Queue</a></li>
+				<li><a href="#status" class="key">Status</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -28,16 +29,16 @@
 			<legend>Server Configuration</legend>
 			<table cellspacing="0">
 				<tr>
-					<td><label for="s_ip">Listen on Host/IP</label></td>
+					<td><label for="s_ip" class="key">Listen on Host/IP</label></td>
 					<td><input type="text" name="ip" id="s_ip" value="${cfg.ip}" /></td>
 				</tr>
 				<tr>
-					<td><label for="s_port">Listen on Port</label></td>
+					<td><label for="s_port" class="key">Listen on Port</label></td>
 					<td><input type="text" name="port" id="s_port" value="${cfg.port}" /></td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<button id="s_save">Save Config</button>
+						<button id="s_save" class="key">Save Config</button>
 					</td>
 				</tr>
 			</table>
