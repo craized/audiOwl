@@ -5,10 +5,29 @@
  */
 
 $(function() {
+	// Reject IE
 	$.reject({
 		reject: { msie: true },
 		close: false,
 		closeESC: false
+	});
+
+	// Start keynav plugin
+	$('.key').keynav('key_focus','key');
+	
+	// Handle label hover properly
+	$('label').hover(function() {
+		$(this).addClass('hover');
+	},function() {
+		$(this).removeClass('hover');
+	});
+
+	// Handle input+label focus
+	$('input').bind('focus blur',function() {
+		var self = $(this);
+		var id = self.attr('id') || '';
+
+		if (id != '') $('label[for="'+id+'"]').toggleClass('hover');
 	});
 
 	// Handle form submissions
@@ -85,7 +104,4 @@ $(function() {
 		list.parents('form').trigger('submit');
 		e.preventDefault();
 	});
-	
-	// Start keynav plugin
-	$('.key').keynav('key_focus','key');
 });

@@ -9,9 +9,10 @@
 	padding: 0;
 }
 body {
-	font: small "Trebuchet MS", Tahoma, Verdana, Arial;
+	font: 1.3em "Trebuchet MS", Tahoma, Verdana, Arial;
 	color: #333;
 	background: #000;
+	overflow-x: hidden;
 }
 a {
 	color: #F4F4F4;
@@ -25,8 +26,8 @@ a:focus {
 header {
 	position: fixed;
 	float: left;
-	height: 50px;
-	width: 180px;
+	height: 2em;
+	width: 9em;
 }
 p {
 	margin: 5px 0;
@@ -35,10 +36,10 @@ p {
 h1 {
 	font-size: 2em;
 	color: #CCC;
-	padding-left: 20px;
+	margin: 0 auto;
 }
 ul {
-	list-style: upper-roman;
+	list-style: upper-roman inside;
 	font-size: 1em;
 }
 li {
@@ -63,7 +64,7 @@ label {
 	padding: 5px;
 	color: #CCC;
 }
-label:focus, label:hover {
+label.hover {
 	background: #CCC;
 	color: #000;
 }
@@ -72,15 +73,20 @@ input {
 	border: 2px solid #333;
 	background: #CCC;
 }
+input:focus {
+	outline: 0;
+	border-color: #FF8300;
+}
 button {
 	border: 2px solid #333;
 	padding: 3px;
 	color: #000;
 	background: #CCC;
 }
-input:focus, button:focus {
-	outline: 0;
-	border-color: #ff8300;
+button:focus {
+	color: #CCC;
+	background: #333;
+	border-color: #FF8300;
 }
 
 /* Tables */
@@ -100,15 +106,17 @@ td {
 nav {
 	position: fixed;
 	border-right: 1px solid #F4F4F4;
-	width: 185px;
+	width: 8em;
+	height: 2em;
 }
 nav ul {
 	list-style: none;
-	width: 180px;
+	width: 8em;
+	height: 2em;
 }
 nav ul li {
-	width: 180px;
-	height: 25px;
+	width: 8em;
+	height: 2em;
 	background: #CCC;
 	color: #000;
 	border: 1px solid #000;
@@ -116,26 +124,35 @@ nav ul li {
 }
 nav a {
 	display: block;
-	width: 170px;
-	height: 20px;
-	padding: 5px 0 0 10px;
+	width: 7.6em;
+	height: 1.6em;
+	padding: 0.4em 0 0 0.4em;
 	color: inherit;
 	border: 0;
 }
 nav a.active {
-	background: transparent url(/images/icon-active.png) left center no-repeat;
 	color: #AB4AB4;
 }
+nav a.active:before {
+	content: ">";
+	font-size: 0.8em;
+	padding: 0 5px 0 0;
+}
 nav a:focus, nav a:hover {
-	background: #333 url(/images/icon-hover.png) left center no-repeat;
+	background: #333;
 	color: #A4A4A4;
 	border: 0;
+}
+nav a:focus:after {
+	content: "<";
+	font-size: 0.8em;
+	padding: 0 0 0 5px;
 }
 
 /* Template Defintions */
 #wrapper {
 	float: left;
-	width: 80%;
+	width: 50em;
 	margin: 20px 0 0 200px;
 }
 

@@ -27,14 +27,17 @@
 			<input type="hidden" name="action" value="cfg.save" />
 			<fieldset>
 				<legend>Server Config</legend>
+				<p>
+					audiOwl must be restarted for changes to have effect
+				</p>
 				<table cellspacing="0">
 					<tr>
-						<td><label for="s_ip" class="key">Listen on Host/IP</label></td>
-						<td><input type="text" name="ip" id="s_ip" value="${cfg.ip}" /></td>
+						<td><label for="s_ip">Listen on Host/IP</label></td>
+						<td><input type="text" name="ip" id="s_ip" class="key" value="${cfg.ip}" /></td>
 					</tr>
 					<tr>
-						<td><label for="s_port" class="key">Listen on Port</label></td>
-						<td><input type="text" name="port" id="s_port" value="${cfg.port}" /></td>
+						<td><label for="s_port">Listen on Port</label></td>
+						<td><input type="text" name="port" id="s_port" class="key" value="${cfg.port}" /></td>
 					</tr>
 					<tr>
 						<td colspan="2">
@@ -48,9 +51,9 @@
 				<legend>Library Config</legend>
 				<table cellspacing="0">
 					<tr>
-						<td><label for="l_dir" class="key">Add Directory</label></td>
+						<td><label for="l_dir">Add Directory</label></td>
 						<td>
-							<input type="text" id="l_dir" value="" />
+							<input type="text" id="l_dir" class="key" value="" />
 							<button id="l_add" class="key">Add</button>
 						</td>
 					</tr>

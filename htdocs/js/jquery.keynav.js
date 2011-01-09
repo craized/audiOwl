@@ -20,7 +20,7 @@ $.fn.keynav = function (onClass,offClass) {
 
 		$(document).keydown(function(e) {
 			// Handle different browsers
-			var key = e == null ? event.keyCode : e.which;
+			var key = e.which;
 
 			// Switch for keys
 			switch(key) {
