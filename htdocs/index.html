@@ -15,36 +15,62 @@
 		<nav>
 			<ul>
 				<li><a href="#library" class="key">Library</a></li>
-				<li><a href="#settings" class="key">Settings</a></li>
+				<li><a href="#settings" class="key active">Settings</a></li>
 				<li><a href="#queue" class="key">Queue</a></li>
 				<li><a href="#status" class="key">Status</a></li>
 			</ul>
 		</nav>
 	</header>
 	<div id="wrapper">
-	<section id="p_settings">
-		<form method="get">
-		<input type="hidden" name="action" value="cfg.save" />
-		<fieldset>
-			<legend>Server Configuration</legend>
-			<table cellspacing="0">
-				<tr>
-					<td><label for="s_ip" class="key">Listen on Host/IP</label></td>
-					<td><input type="text" name="ip" id="s_ip" value="${cfg.ip}" /></td>
-				</tr>
-				<tr>
-					<td><label for="s_port" class="key">Listen on Port</label></td>
-					<td><input type="text" name="port" id="s_port" value="${cfg.port}" /></td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<button id="s_save" class="key">Save Config</button>
-					</td>
-				</tr>
-			</table>
-		</fieldset>
-		</form>
-	</section>
+		<section id="p_settings">
+			<form method="get">
+			<input type="hidden" name="action" value="cfg.save" />
+			<fieldset>
+				<legend>Server Config</legend>
+				<table cellspacing="0">
+					<tr>
+						<td><label for="s_ip" class="key">Listen on Host/IP</label></td>
+						<td><input type="text" name="ip" id="s_ip" value="${cfg.ip}" /></td>
+					</tr>
+					<tr>
+						<td><label for="s_port" class="key">Listen on Port</label></td>
+						<td><input type="text" name="port" id="s_port" value="${cfg.port}" /></td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<button id="s_save" class="key">Save Config</button>
+						</td>
+					</tr>
+				</table>
+			</fieldset><br />
+
+			<fieldset>
+				<legend>Library Config</legend>
+				<table cellspacing="0">
+					<tr>
+						<td><label for="l_dir" class="key">Add Directory</label></td>
+						<td>
+							<input type="text" id="l_dir" value="" />
+							<button id="l_add" class="key">Add</button>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p>Select Directory To Delete</p>
+							<ul id="dirlist">
+							{{each cfg.dir}}
+								<li>
+									<input type="hidden" name="dir" value="${$value}" />
+									<button name="del_dir" class="confirm key">${$value}</button>
+								</li>
+							{{/each}}
+							</ul>
+						</td>
+					</tr>
+				</table>
+			</fieldset>
+			</form>
+		</section>
 	</div>
 </body>
 </html>

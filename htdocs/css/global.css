@@ -10,8 +10,8 @@
 }
 body {
 	font: small "Trebuchet MS", Tahoma, Verdana, Arial;
-	color: #FFF;
-	background: #CCC;
+	color: #333;
+	background: #000;
 }
 a {
 	color: #F4F4F4;
@@ -23,30 +23,45 @@ a:focus {
 	outline: 0;
 }
 header {
+	position: fixed;
 	float: left;
 	height: 50px;
-	width: 20%;
+	width: 180px;
+}
+p {
+	margin: 5px 0;
+	color: #F4F4F4;
 }
 h1 {
 	font-size: 2em;
-	color: #000;
+	color: #CCC;
 	padding-left: 20px;
+}
+ul {
+	list-style: upper-roman;
+	font-size: 1em;
+}
+li {
+	font-size: 1em;
+	color: #F4F4F4;
 }
 
 /* Forms  */
 fieldset {
-	border: 1px solid #000;
-	width: 75%;
+	border: 1px solid #CCC;
+	width: 55%;
 	padding: 10px;
 }
 legend {
-	background: #333;
-	color: #FFF;
+	padding: 5px;
+	background: #CCC;
+	color: #333;
 }
 label {
 	font-weight: bold;
 	cursor: pointer;
 	padding: 5px;
+	color: #CCC;
 }
 label:focus, label:hover {
 	background: #CCC;
@@ -54,22 +69,21 @@ label:focus, label:hover {
 }
 input {
 	outline: 0;
-	border: 1px solid #333;
-}
-input:focus {
-	outline: 0;
-	border-color: #ffc000;
+	border: 2px solid #333;
+	background: #CCC;
 }
 button {
-	border: 1px solid #000;
+	border: 2px solid #333;
 	padding: 3px;
 	color: #000;
-	background: #FFF;
+	background: #CCC;
 }
-button:focus {
+input:focus, button:focus {
 	outline: 0;
-	border-color: #ffc000;
+	border-color: #ff8300;
 }
+
+/* Tables */
 table {
 	padding: 0;
 	margin: 5px;
@@ -83,6 +97,11 @@ td {
 }
 
 /* Navigation */
+nav {
+	position: fixed;
+	border-right: 1px solid #F4F4F4;
+	width: 185px;
+}
 nav ul {
 	list-style: none;
 	width: 180px;
@@ -90,7 +109,7 @@ nav ul {
 nav ul li {
 	width: 180px;
 	height: 25px;
-	background: #FFF;
+	background: #CCC;
 	color: #000;
 	border: 1px solid #000;
 	text-transform: uppercase;
@@ -103,9 +122,13 @@ nav a {
 	color: inherit;
 	border: 0;
 }
+nav a.active {
+	background: transparent url(/images/icon-active.png) left center no-repeat;
+	color: #AB4AB4;
+}
 nav a:focus, nav a:hover {
-	background: #CCC;
-	color: #FFF;
+	background: #333 url(/images/icon-hover.png) left center no-repeat;
+	color: #A4A4A4;
 	border: 0;
 }
 
@@ -113,7 +136,7 @@ nav a:focus, nav a:hover {
 #wrapper {
 	float: left;
 	width: 80%;
-	margin-top: 20px;
+	margin: 20px 0 0 200px;
 }
 
 /* Misc. Classes */
