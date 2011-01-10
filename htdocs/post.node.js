@@ -47,8 +47,9 @@ this.exec = function(data, callback) {
 			}
 		});
 	}
-
-	// Return error to callback
-	error = 'Invalid Request';
-	callback(error, resp);
+	else {
+		// Return error to callback
+		error = 'Invalid Request';
+		callback(error, resp);
+	}
 };
