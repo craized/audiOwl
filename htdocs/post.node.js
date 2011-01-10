@@ -32,8 +32,23 @@ this.exec = function(data, callback) {
 		// End function
 		return;
 	}
+	else if (post.action == 'mb.search') {
+		if (!post.type || post.type == '' || !mb.search[post.type]) {
+			callback(false, { 'error' : 'Invalid Search Type' });
+			return;
+		}
+		// Send query data to function
+		mb.search[post.type](post.query, '', function (error, data) {
+			if (error) {
+				callback(false, { 'error' : error });
+			}
+			else {
+				callback(false, { 'data' : data });
+			}
+		});
+	}
 
 	// Return error to callback
 	error = 'Invalid Request';
 	callback(error, resp);
-}
+};

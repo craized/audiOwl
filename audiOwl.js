@@ -15,10 +15,12 @@ var sys = require('sys'),
 	db = require('./lib/db.js'),
 	http = require('http'),
 	url = require('url'),
-	jqtpl = require('./vendor/jqtpl.js');
+	jqtpl = require('./vendor/jqtpl.js'),
+	mb = require('./lib/musicbrainz.js');
 
-// Make DB global
+// Make libraries global
 GLOBAL.db = db;
+GLOBAL.mb = mb;
 
 /* Load Config Data */
 var cfg = {};
@@ -32,10 +34,10 @@ db.read('config', function (data) {
 		var fpath = basedir+'/htdocs/'+file;
 
 		// Hardcode type detection of dynamic js
-		/// NOTE: replace with better system later ///
+		/// NOTE: replace with better system eventually ///
 		if (file.indexOf('.node.js') != -1) {
-			var code = require(fpath);
-			code.exec(page, function(error, resp) {
+			// Load exec function from page
+			require(fpath).exec(page, function(error, resp) {
 				// Send response as JSON
 				res.writeHead(200, {'Content-Type': 'text/json' });
 				res.end(JSON.stringify(resp));
@@ -54,7 +56,7 @@ db.read('config', function (data) {
 				}
 				
 				// Determine MIME TYPE
-				/// NOTE: replace with better system later ///
+				/// NOTE: replace with better system later (node-mime) ///
 				var type = 'text/plain';
 				if (file.indexOf('.html') != -1) type = 'text/html';
 				else if (file.indexOf('.js') != -1) type = 'text/javascript';

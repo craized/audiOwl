@@ -1,0 +1,51 @@
+<form>
+<input type="hidden" name="action" value="cfg.save" />
+<fieldset>
+	<legend>Server Config</legend>
+	<p>
+		audiOwl must be restarted for changes to have effect
+	</p>
+	<table cellspacing="0">
+		<tr>
+			<td><label for="s_ip">Listen on Host/IP</label></td>
+			<td><input type="text" name="ip" id="s_ip" class="key" value="${cfg.ip}" /></td>
+		</tr>
+		<tr>
+			<td><label for="s_port">Listen on Port</label></td>
+			<td><input type="text" name="port" id="s_port" class="key" value="${cfg.port}" style="width:40px;" /></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<button id="s_save" class="key">Save Config</button>
+			</td>
+		</tr>
+	</table>
+
+</fieldset><br />
+
+<fieldset>
+	<legend>Library Config</legend>
+	<table cellspacing="0">
+		<tr>
+			<td><label for="l_dir">Add Directory</label></td>
+			<td>
+				<input type="text" id="l_dir" class="key" value="" />
+				<button id="l_add" class="key">Add</button>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<p>Select Directory To Delete</p>
+				<ul id="dirlist">
+				{{each cfg.dir}}
+					<li>
+						<input type="hidden" name="dir" value="${$value}" />
+						<button name="del_dir" class="confirm key">${$value}</button>
+					</li>
+				{{/each}}
+				</ul>
+			</td>
+		</tr>
+	</table>
+</fieldset>
+</form>

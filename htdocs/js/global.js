@@ -12,6 +12,48 @@ $(function() {
 		closeESC: false
 	});
 
+
+	// Handle page turns
+	$('a[rel="page"]').live('click',function() {
+		// Determine page
+		var self = $(this);
+		var page = self.attr('href').replace(/#/,'');
+		
+		// Request page data
+		$.get(page+'.html', function(data) {
+			// Hide current section
+			$('section.page').hide();
+
+			// Check if page is already loaded
+			var sect = $('#p_'+page);
+			if (sect.length == 0) {
+				sect = $('<section id="p_'+page+'" class="page hidden"></section>');
+			}
+
+			// Insert file html
+			sect.html(data);
+
+			// Add to DOM + Hide existing
+			$('section.page:visible').fadeOut('fast');
+			sect.appendTo('#wrapper').fadeIn('fast');
+
+			// Handle nav changes
+			$('a[rel="page"].active').removeClass('active');
+			self.addClass('active');
+			
+			// Start keynav plugin
+			$('.key').keynav('key_focus','key');
+		});
+	});
+
+	// Check hash tag on load
+	var hash = location.hash || '';
+	
+	// Call event on link to this hash
+	if (hash !== '') {
+		$('a[href="'+hash+'"]').click();
+	}
+
 	// Start keynav plugin
 	$('.key').keynav('key_focus','key');
 	
@@ -48,6 +90,11 @@ $(function() {
 				for (var x in data.html) {
 					$('#'+x).html(data.html[x]);
 				}
+			}
+
+			// Handle debug data
+			if (data.debug) {
+				$('#debug').append($('<p>'+data.debug+'</p>'));
 			}
 		}, 'json');
 

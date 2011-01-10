@@ -172,7 +172,7 @@ $.keynav.goDown = function () {
 
 $.keynav.activate = function () {
 	var kn = $.keynav;
-	$(kn.currentEl).trigger('click');
+	//$(kn.currentEl).trigger('click');
 }
 
 

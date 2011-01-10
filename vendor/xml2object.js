@@ -1,5 +1,5 @@
 var sys = require("sys"),
-	xml = require("../vendor/node-xml/lib/node-xml");
+	xml = require("./node-xml");
 
 var Element = function(parent) {
 	var parent = parent;
