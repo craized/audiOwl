@@ -17,6 +17,9 @@ var sys = require('sys'),
 	url = require('url'),
 	jqtpl = require('./vendor/jqtpl.js');
 
+// Make DB global
+GLOBAL.db = db;
+
 /* Load Config Data */
 var cfg = {};
 db.read('config', function (data) {
@@ -28,35 +31,16 @@ db.read('config', function (data) {
 		var file = page.pathname == '/' ? 'index.html' : page.pathname;
 		var fpath = basedir+'/htdocs/'+file;
 
-		// Hardcode POST page
+		// Hardcode type detection of dynamic js
 		/// NOTE: replace with better system later ///
-		if (file == '/post') {
-			var resp = { 'error' : 'Invalid Request' }; // Response object
-			var post = page.query; // Query Data
-
-			if (post.action == 'cfg.save') {
-				// Format fields for DB
-				delete post.action;
-
-				// Handle directory input
-				post.dir = post.dir == undefined ? '' : post.dir;
-				if (typeof post.dir != 'object') {
-					post.dir = post.dir.length > 0 ? [post.dir] : [];
-				}
-
-				// Save DB
-				db.save('config', post, function() {		
-					// Reload DB
-					db.read('config',function (data) {
-						cfg = data;
-					});
-
-					// Send response as JSON
-					resp = {'message': 'saved'};
-					res.writeHead(200, {'Content-Type': 'text/json' });
-					res.end(JSON.stringify(resp));
-				});
-			}
+		if (file.indexOf('.node.js') != -1) {
+			var code = require(fpath);
+			code.exec(page, function(error, resp) {
+				// Send response as JSON
+				res.writeHead(200, {'Content-Type': 'text/json' });
+				res.end(JSON.stringify(resp));
+				sys.log('[NJS] Processed '+file);
+			});
 		}
 		else {
 			// Attempt to load requested file
