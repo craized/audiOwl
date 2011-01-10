@@ -16,23 +16,26 @@ $(function() {
 	$('.key').keynav('key_focus','key');
 	
 	// Handle label hover properly
-	$('label').hover(function() {
+	$('label').live('mouseover',function() {
 		$(this).addClass('hover');
-	},function() {
+	}).live('mouseout',function() {
 		$(this).removeClass('hover');
 	});
 
 	// Handle input+label focus
-	$('input').bind('focus blur',function() {
+	$('input').live('focus blur',function(e) {
 		var self = $(this);
 		var id = self.attr('id') || '';
 
-		if (id != '') $('label[for="'+id+'"]').toggleClass('hover');
+		if (id != '') {
+			$('label[for="'+id+'"]')
+				.trigger(e.type == 'focus' ? 'mouseover' : 'mouseout');
+		}
 	});
 
 	// Handle form submissions
-	$('form').submit(function(e) {
-		$.get('/post', $(this).serialize(), function(data) {
+	$('form').live('submit',function(e) {
+		$.get('/post.node.js', $(this).serialize(), function(data) {
 			console.log(data);
 
 			// Check for error
@@ -52,7 +55,7 @@ $(function() {
 	});
 
 	// Confirm button
-	$('button.confirm').click(function(e) {
+	$('button.confirm').live('click',function(e) {
 		var self = $(this);
 		var c = confirm('Are you sure you want to '+self.attr('name').replace(/_/,' ')+'? Can not be un-done.');
 
@@ -80,7 +83,7 @@ $(function() {
 		}
 	});
 
-	$('#l_add').click(function(e) {
+	$('#l_add').live('click',function(e) {
 		var list = $('#dirlist');
 		var dir = $('#l_dir');
 		var val = dir.val();
