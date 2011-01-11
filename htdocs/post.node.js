@@ -39,7 +39,7 @@ this.exec = function(data, callback) {
 		}
 
 		// Send query data to function
-		mb.search[post.type](post.query, '', function (error, data) {
+		mb.search[post.type](post.query, [], function (error, data) {
 			if (error) {
 				callback(false, { error : error });
 			}
