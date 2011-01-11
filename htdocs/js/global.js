@@ -77,9 +77,10 @@ $(function() {
 
 	// Handle form submissions
 	$('form').live('submit',function(e) {
-		$.get('/post.node.js', $(this).serialize(), function(data) {
-			console.log(data);
-
+		$.get('/post.node.js', $(this).serialize(), function(raw) {
+			console.log(raw);
+			var data = $.parseJSON(raw);
+			
 			// Check for error
 			if (data.error) {
 				alert('Error: '+data.error);
@@ -94,9 +95,14 @@ $(function() {
 
 			// Handle debug data
 			if (data.debug) {
-				$('#debug').append($('<p>'+data.debug+'</p>'));
+				console.log(data.debug);
+
+				var fmt = raw.replace(/\{/g,'{'+"\n\t")
+							.replace(/\}/g,"\n"+'}')
+							.replace(/\:/g,' : ');
+				$('#debug').text(fmt);
 			}
-		}, 'json');
+		});
 
 		e.preventDefault();
 	});

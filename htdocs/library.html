@@ -1,11 +1,11 @@
 <form>
 	<label for="l_query">Test MusicBrainz Response</label><br />
-	<input type="text" id="l_query" name="query" class="key" style="width:300px;" />
+	<input type="text" id="l_query" name="query" class="key" value="Rolling Stones" style="width:300px;" />
 	<input type="hidden" name="action" value="mb.search" />
 
 	<select name="type" class="key">
 		<option value="">Select Type</option>
-		<option value="artist">Artist</option>
+		<option value="artist" selected="selected">Artist</option>
 		<option value="release">Release</option>
 		<option value="track">Track</option>
 	</select>
@@ -14,5 +14,7 @@
 </form>
 <br />
 
-<strong>Raw Responses</strong><br />
-<div id="debug" style="width:80%;height:auto;overflow:auto;"></div>
+<div style="color:#FFF;">
+	<strong>Raw Responses</strong><br />
+	<pre id="debug" style="width:80%;word-wrap:break-word;"></pre>
+</div>

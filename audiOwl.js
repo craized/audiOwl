@@ -36,12 +36,14 @@ db.read('config', function (data) {
 		// Hardcode type detection of dynamic js
 		/// NOTE: replace with better system eventually ///
 		if (file.indexOf('.node.js') != -1) {
+			sys.log('[NJS] Started...');
 			// Load exec function from page
 			require(fpath).exec(page, function(error, resp) {
+				sys.log('[NJS] Response: '+error+'; '+resp);
+
 				// Send response as JSON
-				res.writeHead(200, {'Content-Type': 'text/json' });
+				res.writeHead(200, {'Content-Type': 'text/html' });
 				res.end(JSON.stringify(resp));
-				sys.log('[NJS] Processed '+file);
 			});
 		}
 		else {

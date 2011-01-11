@@ -24,7 +24,7 @@ this.exec = function(data, callback) {
 				cfg = data;
 
 				// Formulate response and execute callback
-				resp = {'message': 'saved'};
+				resp = { message: 'saved' };
 				callback(error, resp);
 			});
 		});
@@ -34,22 +34,23 @@ this.exec = function(data, callback) {
 	}
 	else if (post.action == 'mb.search') {
 		if (!post.type || post.type == '' || !mb.search[post.type]) {
-			callback(false, { 'error' : 'Invalid Search Type' });
+			callback(false, { error : 'Invalid Search Type' });
 			return;
 		}
+
 		// Send query data to function
 		mb.search[post.type](post.query, '', function (error, data) {
 			if (error) {
-				callback(false, { 'error' : error });
+				callback(false, { error : error });
 			}
 			else {
-				callback(false, { 'data' : data });
+				callback(false, { debug : data });
 			}
 		});
+		
+		return;
 	}
-	else {
-		// Return error to callback
-		error = 'Invalid Request';
-		callback(error, resp);
-	}
+
+	// Return error to callback
+	callback(error, resp);
 };

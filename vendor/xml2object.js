@@ -74,7 +74,7 @@ exports.parseString = function(string, callback) {
 		}
 		
 		cb.onEndElementNS(function(elem, prefix, uri) {
-			if(current_object.getParent() == null) {
+			if(!current_object || current_object.getParent() == null) {
 				var obj = {};
 				obj[elem] = current_object;
 				callback(null, obj);
