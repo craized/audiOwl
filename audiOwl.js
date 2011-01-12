@@ -12,6 +12,7 @@ GLOBAL.basedir = __dirname;
 /* Include Libraries */
 var sys = require('sys'),
 	fs = require('fs'),
+	util = require('util'),
 	db = require('./lib/db.js'),
 	http = require('http'),
 	url = require('url'),
@@ -22,6 +23,9 @@ var sys = require('sys'),
 // Make libraries global
 GLOBAL.db = db;
 GLOBAL.mb = mb;
+GLOBAL.fs = fs;
+GLOBAL.sys = sys;
+GLOBAL.idtags = idtags;
 
 /* Load Config Data */
 var cfg = {};
@@ -37,7 +41,7 @@ db.read('config', function (data) {
 		// Hardcode type detection of dynamic js
 		/// NOTE: replace with better system eventually ///
 		if (file.indexOf('.node.js') != -1) {
-			sys.log('[NJS] Started...');
+			sys.log('[NJS] '+file+' Started...');
 			// Load exec function from page
 			require(fpath).exec(page, function(error, resp) {
 				sys.log('[NJS] Response: '+error+'; '+resp);
