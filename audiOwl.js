@@ -16,7 +16,8 @@ var sys = require('sys'),
 	http = require('http'),
 	url = require('url'),
 	jqtpl = require('./vendor/jqtpl.js'),
-	mb = require('./lib/musicbrainz.js');
+	mb = require('./lib/musicbrainz.js'),
+	idtags = require('./vendor/id3');
 
 // Make libraries global
 GLOBAL.db = db;
