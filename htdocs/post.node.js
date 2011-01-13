@@ -37,9 +37,8 @@ this.exec = function(data, callback) {
 			callback(false, { error : 'Invalid Search Type' });
 			return;
 		}
-
 		// Send query data to function
-		mb.search[post.type](post.query, [], function (error, data) {
+		mb.search[post.type]({ query: post.query, args: {}, flags: [] }, function (error, data) {
 			if (error) {
 				callback(false, { error : error });
 			}
