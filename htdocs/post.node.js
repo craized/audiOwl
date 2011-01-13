@@ -4,7 +4,7 @@
 
 this.exec = function(data, callback) {
 	var post = data.query; // Query Data
-	var resp = { 'error' : 'Invalid Request' }; // Response object
+	var resp = { 'error' : 'Invalid Request!' }; // Response object
 	var error = false;
 
 	if (post.action == 'cfg.save') {
@@ -45,6 +45,31 @@ this.exec = function(data, callback) {
 			else {
 				callback(false, { debug : data });
 			}
+		});
+		
+		return;
+	}
+	else if (post.action == 'id3.get') {
+		if (!post.file) {
+			callback(false, { error : 'No File Specified' });
+			return;
+		}
+
+		// WARNING: Security hole
+		// we will have to sanitize the inputs
+		// to ensure it can't be abused
+		fs.readFile(post.file, function(error, data) {
+			if (error) {
+				callback(false, { error: error });
+				return;
+			}
+
+			// Pass mp3 file to node-id3
+			var file = new idtags(data);
+			console.log('[ID3] getTags:');
+
+			callback(false, { debug: file.getTags() });
+			return;
 		});
 		
 		return;

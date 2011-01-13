@@ -100,7 +100,7 @@ $(function() {
 				var fmt = raw.replace(/\{/g,'{'+"\n\t")
 							.replace(/\}/g,"\n"+'}')
 							.replace(/\:/g,' : ');
-				$('#debug').text(fmt);
+				$('.debug').text(fmt);
 			}
 		});
 
