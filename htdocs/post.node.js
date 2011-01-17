@@ -37,8 +37,7 @@ this.exec = function(data, callback) {
 			callback(false, { error : 'Invalid Search Type' });
 			return;
 		}
-
-		// Send query data to musicbrainz library
+		// Send query data to function
 		mb.search[post.type]({ query: post.query, args: {}, flags: [] }, function (error, data) {
 			if (error) {
 				callback(false, { error : error });
@@ -56,35 +55,9 @@ this.exec = function(data, callback) {
 			return;
 		}
 
-
-		// Read an entire directory
-		dirs.readDirectory(post.file,function (error, json) {
-			if (error) {
-				callback(false, { error: json });
-				return;
-			}
-
-			callback(false, { debug: json });
-		}, {
-			callback: function (name, stat) {
-				if (stat.isDirectory()) return true;
-
-				// Only validate audio files
-				var ext = PATH.extname(name);
-				var ret = false;
-				switch (ext) {
-					case '.mp3' :
-					case '.flac' :
-					case '.ogg' :
-						ret = true;
-				}
-
-				return ret;
-			}
-		});
-
-		/*
-		// Read specific file
+		// WARNING: Security hole
+		// we will have to sanitize the inputs
+		// to ensure it can't be abused
 		fs.readFile(post.file, function(error, data) {
 			if (error) {
 				callback(false, { error: error });
@@ -97,7 +70,7 @@ this.exec = function(data, callback) {
 
 			callback(false, { debug: file.getTags() });
 			return;
-		});*/
+		});
 		
 		return;
 	}

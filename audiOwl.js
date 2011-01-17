@@ -16,10 +16,8 @@ var sys = require('sys'),
 	db = require('./lib/db.js'),
 	http = require('http'),
 	url = require('url'),
-	path = require('path'),
 	jqtpl = require('./vendor/jqtpl.js'),
 	mb = require('./lib/musicbrainz.js'),
-	dirs = require('./lib/dirs.js'),
 	idtags = require('./vendor/id3');
 
 // Make libraries global
@@ -27,8 +25,6 @@ GLOBAL.db = db;
 GLOBAL.mb = mb;
 GLOBAL.fs = fs;
 GLOBAL.sys = sys;
-GLOBAL.dirs = dirs;
-GLOBAL.PATH = path;
 GLOBAL.idtags = idtags;
 
 /* Load Config Data */
