@@ -9,6 +9,8 @@
 
 GLOBAL.basedir = __dirname;
 
+require('./lib/core.js');
+
 /* Include Libraries */
 var sys = require('sys'),
 	fs = require('fs'),
