@@ -19,17 +19,17 @@ var sys = require('sys'),
 	path = require('path'),
 	jqtpl = require('./vendor/jqtpl.js'),
 	mb = require('./lib/musicbrainz.js'),
-	dirs = require('./lib/dirs.js'),
-	idtags = require('./vendor/id3');
+	idtags = require('./vendor/id3'),
+	fparser = require('./lib/fileparser.js');
 
 // Make libraries global
 GLOBAL.db = db;
 GLOBAL.mb = mb;
 GLOBAL.fs = fs;
 GLOBAL.sys = sys;
-GLOBAL.dirs = dirs;
 GLOBAL.PATH = path;
-GLOBAL.idtags = idtags;
+GLOBAL.idTags = idtags;
+GLOBAL.fparser = fparser;
 
 /* Load Config Data */
 var cfg = {};

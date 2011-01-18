@@ -55,49 +55,17 @@ this.exec = function(data, callback) {
 			callback(false, { error : 'No File Specified' });
 			return;
 		}
-
-
-		// Read an entire directory
-		dirs.readDirectory(post.file,function (error, json) {
+		
+		// Testing fparser functions
+		// Interchangable with: getInfo, readFile, _infoFromPath
+		fparser._infoFromPath(post.file, function(error, data) {
 			if (error) {
-				callback(false, { error: json });
-				return;
+				callback(false, { error : error });
 			}
-
-			callback(false, { debug: json });
-		}, {
-			callback: function (name, stat) {
-				if (stat.isDirectory()) return true;
-
-				// Only validate audio files
-				var ext = PATH.extname(name);
-				var ret = false;
-				switch (ext) {
-					case '.mp3' :
-					case '.flac' :
-					case '.ogg' :
-						ret = true;
-				}
-
-				return ret;
+			else {
+				callback(false, { debug : data });
 			}
 		});
-
-		/*
-		// Read specific file
-		fs.readFile(post.file, function(error, data) {
-			if (error) {
-				callback(false, { error: error });
-				return;
-			}
-
-			// Pass mp3 file to node-id3
-			var file = new idtags(data);
-			console.log('[ID3] getTags:');
-
-			callback(false, { debug: file.getTags() });
-			return;
-		});*/
 		
 		return;
 	}
