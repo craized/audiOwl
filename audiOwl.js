@@ -21,6 +21,7 @@ var sys = require('sys'),
 	path = require('path'),
 	jqtpl = require('./vendor/jqtpl.js'),
 	mb = require('./lib/musicbrainz.js'),
+	xReg = require('./vendor/xregexp.js'),
 	idtags = require('./vendor/id3'),
 	fparser = require('./lib/fileparser.js');
 
@@ -29,6 +30,7 @@ GLOBAL.db = db;
 GLOBAL.mb = mb;
 GLOBAL.fs = fs;
 GLOBAL.sys = sys;
+GLOBAL.xReg = xReg;
 GLOBAL.PATH = path;
 GLOBAL.idTags = idtags;
 GLOBAL.fparser = fparser;
