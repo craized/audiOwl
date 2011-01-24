@@ -1,7 +1,6 @@
 /*
-	Handle POST responses
-*/
-
+ * Handle POST responses
+ */
 this.exec = function(data, callback) {
 	var post = data.query; // Query Data
 	var resp = { 'error' : 'Invalid Request!' }; // Response object
@@ -58,14 +57,19 @@ this.exec = function(data, callback) {
 		
 		// Testing fparser functions
 		// Interchangable with: getInfo, readFile, _infoFromPath
-		fparser._infoFromPath(post.file, function(error, data) {
+		fparser.getInfo(post.file, function(error, data) {
+			if (data.found == false && data.custom == false) {
+				callback(false, { req: 'Could not find match. Enter custom pattern.' });
+				return;
+			}
+
 			if (error) {
 				callback(false, { error : error });
+				return;
 			}
-			else {
-				callback(false, { debug : data });
-			}
-		});
+
+			callback(false, { debug : data });
+		}, post.custom ? { search: post.custom, usedir: true } : false);
 		
 		return;
 	}

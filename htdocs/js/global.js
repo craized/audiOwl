@@ -77,6 +77,8 @@ $(function() {
 
 	// Handle form submissions
 	$('form').live('submit',function(e) {
+		var self = $(this);
+
 		$.get('/post.node.js', $(this).serialize(), function(raw) {
 			console.log(raw);
 			var data = $.parseJSON(raw);
@@ -91,6 +93,13 @@ $(function() {
 				for (var x in data.html) {
 					$('#'+x).html(data.html[x]);
 				}
+			}
+
+			// Handle requests for information
+			if (data.req) {
+				var html = '<label for="inforeq">'+data.req+'</label><br />'
+						+'<input type="text" name="custom" id="inforeq" style="width:300px;" value="/<artist>/<album>/<track>.<title>" />';
+				self.append($('<div>'+html+'</div>'));
 			}
 
 			// Handle debug data
